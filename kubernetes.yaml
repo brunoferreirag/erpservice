@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: logistica
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: logistica
+  template:
+    metadata:
+      labels:
+        app: logistica
+    spec:
+      nodeSelector:
+        "beta.kubernetes.io/os": linux
+      containers:
+      - name: logistica
+        image: docker.io/brunoferreirag/logistica:latest
+        ports:
+        - containerPort: 8004
+          name: logistica
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "10m"
+          limits:
+            memory: "256Mi"
+            cpu: "256m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: logistica
+spec:
+  selector:
+    app: logistica
+  ports:
+    - protocol: TCP
+      port: 8004
+      targetPort: 8004
+      name: tcp-8004
+---

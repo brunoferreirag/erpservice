@@ -1,0 +1,12 @@
+name: logistica
+image: docker.io/brunoferreirag/logistica:latest
+sync:
+- .:/workspace/app/
+persistentVolume:
+  enabled: false
+forward:
+- 8004:8004
+resources:
+  limits:
+    cpu: "0.2"
+    memory: 0.25Gi
