@@ -33,7 +33,6 @@ kind: Service
 metadata:
   name: logistica
 spec:
-  type: LoadBalancer 
   ports:
     - name: logistica
       protocol: TCP
