@@ -57,7 +57,11 @@ public class ArmazemService {
 	private void incluirArmazem(ArmazemDTO armazemDTO) throws Exception {
 		Armazem armazem = new Armazem();
 		preencherArmazemEntityDeUmArmazemDTO(armazemDTO, armazem);
-		this.armazemRepository.save(armazem);
+		Armazem armazemOptional = this.armazemRepository.findByIdAndStatus(armazemDTO.getId(), Constants.STATUS_ATIVO);
+		if(armazemOptional==null) {
+			this.armazemRepository.save(armazem);
+		}
+		
 	}
 
 	public void editarArmazem(ArmazemDTO armazemDTO) throws Exception {
