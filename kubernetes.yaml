@@ -33,6 +33,7 @@ kind: Service
 metadata:
   name: erpservice
 spec:
+  type: LoadBalancer 
   ports:
     - name: erpservice
       protocol: TCP
