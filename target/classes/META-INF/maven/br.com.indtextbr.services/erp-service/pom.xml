@@ -10,13 +10,13 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.indtextbr.services</groupId>
-	<artifactId>logistica</artifactId>
+	<artifactId>erp-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>logistica</name>
-	<description>Web Service do Sistema de Logística</description>
-
+	<name>erp-service</name>
+	<description>Web Service do ERP SAP</description>
 	<properties>
 		<java.version>15</java.version>
+		<skipITs>true</skipITs>
 		<spring-cloud.version>Hoxton.SR9</spring-cloud.version>
 	</properties>
 
@@ -38,11 +38,6 @@
 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.kafka</groupId>
-			<artifactId>spring-kafka</artifactId>
-		</dependency>
-
-		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
@@ -58,9 +53,9 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.kafka</groupId>
-			<artifactId>spring-kafka-test</artifactId>
-			<scope>test</scope>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
 

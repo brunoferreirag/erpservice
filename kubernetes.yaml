@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: logistica
+  name: erpservice
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: logistica
+      app: erpservice
   template:
     metadata:
       labels:
-        app: logistica
+        app: erpservice
     spec:
       nodeSelector:
         "beta.kubernetes.io/os": linux
       containers:
-      - name: logistica
-        image: docker.io/brunoferreirag/logistica:latest
+      - name: erpservice
+        image: docker.io/brunoferreirag/erpservice:latest
         ports:
         - containerPort: 8004
-          name: logistica
+          name: erpservice
         resources:
           requests:
             memory: "128Mi"
@@ -31,12 +31,12 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: logistica
+  name: erpservice
 spec:
   ports:
-    - name: logistica
+    - name: erpservice
       protocol: TCP
       port: 8004
   selector:
-    app: logistica
+    app: erpservice
 ---
