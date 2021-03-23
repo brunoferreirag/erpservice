@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.indtextbr.services.erpservice.dto.ParadaProducaoDTO;
 import br.com.indtextbr.services.erpservice.entity.ParadaProducao;
 import br.com.indtextbr.services.erpservice.service.ParadaProducaoService;
 
@@ -33,33 +34,33 @@ public class ParadaProducaoController {
 		this.paradaProducaoService =paradaProducaoService;
 	}
 	@GetMapping(produces = { "application/json" })
-	public ResponseEntity<Page<ParadaProducao>> getAll(@RequestParam(name = "page", defaultValue = "0") int page,@RequestParam(name = "size", defaultValue = "10")int size) {
-		Page<ParadaProducao> paradasProducao = this.paradaProducaoService.getAll(page, size);
-		return new ResponseEntity<Page<ParadaProducao>>(paradasProducao, HttpStatus.OK);
+	public ResponseEntity<Page<ParadaProducaoDTO>> getAll(@RequestParam(name = "page", defaultValue = "0") int page,@RequestParam(name = "size", defaultValue = "10")int size) {
+		Page<ParadaProducaoDTO> paradasProducao = this.paradaProducaoService.getAll(page, size);
+		return new ResponseEntity<Page<ParadaProducaoDTO>>(paradasProducao, HttpStatus.OK);
 	}
 	
 	@GetMapping(value="/{id}", produces = { "application/json" })
-	public ResponseEntity<ParadaProducao> getArmazemById(@PathVariable(value="id") Long id) {
+	public ResponseEntity<ParadaProducaoDTO> getArmazemById(@PathVariable(value="id") Long id) {
 		var paradaProducao = this.paradaProducaoService.getById(id);
 		return new ResponseEntity<>((paradaProducao.isEmpty())?null:paradaProducao.get(), (paradaProducao.isEmpty()) ? HttpStatus.NOT_FOUND : HttpStatus.OK);
 	}
 	
 	@PostMapping(produces = { "application/json" })
-	public ResponseEntity<Object> incluirParada(@RequestBody @Valid ParadaProducao paradaProducao){
+	public ResponseEntity<Object> incluirParada(@RequestBody @Valid ParadaProducaoDTO paradaProducao){
 		Long id = this.paradaProducaoService.incluir(paradaProducao).getId();
 		URI location = URI.create(String.format("/%s", id));
 		return ResponseEntity.created(location).build();
 	}
 	
 	@PutMapping(value="/{id}",produces = { "application/json" })
-	public ResponseEntity<Void> atualizarAmazem(@PathVariable(value="id") Long id, @RequestBody @Valid ParadaProducao paradaProducao){
+	public ResponseEntity<Void> atualizarParada(@PathVariable(value="id") Long id, @RequestBody @Valid ParadaProducaoDTO paradaProducao){
 		paradaProducao.setId(id);
 		this.paradaProducaoService.alterar(paradaProducao);
 		return ResponseEntity.accepted().build();
 	}
 	
 	@DeleteMapping(value="/{id}",produces = { "application/json" })
-	public ResponseEntity<Void> inativarArmazem(@PathVariable(value="/{id}") Long id){
+	public ResponseEntity<Void> excluirParada(@PathVariable(value="/{id}") Long id){
 		this.paradaProducaoService.excluir(id);
 		return ResponseEntity.accepted().build();
 	}
