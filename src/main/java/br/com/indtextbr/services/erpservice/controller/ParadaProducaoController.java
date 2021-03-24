@@ -40,7 +40,7 @@ public class ParadaProducaoController {
 	}
 	
 	@GetMapping(value="/{id}", produces = { "application/json" })
-	public ResponseEntity<ParadaProducaoDTO> getArmazemById(@PathVariable(value="id") Long id) {
+	public ResponseEntity<ParadaProducaoDTO> getParadaProducaoById(@PathVariable(value="id") Long id) {
 		var paradaProducao = this.paradaProducaoService.getById(id);
 		return new ResponseEntity<>((paradaProducao.isEmpty())?null:paradaProducao.get(), (paradaProducao.isEmpty()) ? HttpStatus.NOT_FOUND : HttpStatus.OK);
 	}

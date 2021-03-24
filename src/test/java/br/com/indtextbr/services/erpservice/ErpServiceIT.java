@@ -52,8 +52,8 @@ public class ErpServiceIT {
 	}
 	
 	@Test
-	public void deveStatusProducao() {
-        String uri = "/parada-producao";
+	public void deveConsultarParadaProducao() {
+        String uri = "/parada-producao?page=0&size=10";
         ResponseEntity response = restTemplate.getForEntity(uri, String.class);
         Assert.assertEquals(HttpStatus.OK, response.getStatusCode());
         Assert.assertNotNull(response.getBody());
@@ -75,7 +75,7 @@ public class ErpServiceIT {
         ResponseEntity<String> response = restTemplate.postForEntity(uri,dto, String.class);
         Assert.assertEquals(HttpStatus.CREATED, response.getStatusCode());
         String urlDelete = uri + response.getHeaders().getLocation(); 
-        restTemplate.delete(urlDelete);
+        //restTemplate.delete(urlDelete);
         
 	}
 }

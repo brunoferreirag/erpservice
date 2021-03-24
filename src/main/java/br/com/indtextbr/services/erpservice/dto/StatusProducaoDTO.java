@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class StatusFaseIndustrialDTO {
+public class StatusProducaoDTO {
 	private FaseIndustrial fase;
 	private BigDecimal percentualConcluido;
 	private Boolean possuiParadaProducao;

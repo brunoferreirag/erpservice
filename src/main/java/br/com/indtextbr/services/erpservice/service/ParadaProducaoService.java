@@ -40,12 +40,12 @@ public class ParadaProducaoService {
 		PageRequest pageRequest = PageRequest.of(page, size);
 		var resultados = this.repository.findAllByOrderByDataHoraInicioDesc(pageRequest);
 		List<ParadaProducaoDTO> lista = new ArrayList<>();
-		Page<ParadaProducaoDTO> pageResult = new PageImpl<>(lista);
 		resultados.getContent().forEach(resultado -> {
 			ParadaProducaoDTO parada = criarParadaProducaoDTO(resultado);
 			
 			lista.add(parada);
 		});
+		Page<ParadaProducaoDTO> pageResult = new PageImpl<>(lista);
 		return pageResult;
 	}
 	private ParadaProducaoDTO criarParadaProducaoDTO(ParadaProducao resultado) {

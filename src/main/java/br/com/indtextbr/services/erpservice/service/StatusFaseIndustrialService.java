@@ -10,7 +10,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.indtextbr.services.erpservice.dto.StatusFaseIndustrialDTO;
+import br.com.indtextbr.services.erpservice.dto.StatusProducaoDTO;
 import br.com.indtextbr.services.erpservice.entity.ParadaProducao;
 import br.com.indtextbr.services.erpservice.repository.FaseIndustrialRepository;
 
@@ -26,12 +26,12 @@ public class StatusFaseIndustrialService {
 		this.faseRepository = faseRepository;
 	}
 	
-	public List<StatusFaseIndustrialDTO> getStatusProducao(){
+	public List<StatusProducaoDTO> getStatusProducao(){
 		var fasesIndustriais = this.faseRepository.findAll();
 		List<ParadaProducao> paradas= this.paradaService.getAllAtivos();
-		List<StatusFaseIndustrialDTO> statusFases = new ArrayList<>(); 
+		List<StatusProducaoDTO> statusFases = new ArrayList<>(); 
 		fasesIndustriais.forEach(f -> {
-			StatusFaseIndustrialDTO dto = new StatusFaseIndustrialDTO();
+			StatusProducaoDTO dto = new StatusProducaoDTO();
 			dto.setFase(f);
 			Boolean possuiParadaProducaoAtiva = paradas.stream().anyMatch(q->q.getLinha().getFase().getId().equals(f.getId()));
 			dto.setPossuiParadaProducao(possuiParadaProducaoAtiva);

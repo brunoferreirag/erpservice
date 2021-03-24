@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.indtextbr.services.erpservice.dto.StatusFaseIndustrialDTO;
+import br.com.indtextbr.services.erpservice.dto.StatusProducaoDTO;
 import br.com.indtextbr.services.erpservice.entity.LinhaProducao;
 import br.com.indtextbr.services.erpservice.service.LinhaProducaoService;
 import br.com.indtextbr.services.erpservice.service.StatusFaseIndustrialService;

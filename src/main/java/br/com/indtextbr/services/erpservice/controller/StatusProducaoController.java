@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.indtextbr.services.erpservice.dto.StatusFaseIndustrialDTO;
+import br.com.indtextbr.services.erpservice.dto.StatusProducaoDTO;
 import br.com.indtextbr.services.erpservice.service.StatusFaseIndustrialService;
 
 @RestController
@@ -27,8 +27,8 @@ public class StatusProducaoController {
 	}
 	
 	@GetMapping(produces = { "application/json" })
-	public ResponseEntity<List<StatusFaseIndustrialDTO>> getAll(@RequestParam(name = "page", defaultValue = "0") int page,@RequestParam(name = "size", defaultValue = "10")int size) {
+	public ResponseEntity<List<StatusProducaoDTO>> getAll() {
 		var statusProducao = this.statusFaseIndustrialService.getStatusProducao();
-		return new ResponseEntity<List<StatusFaseIndustrialDTO>>(statusProducao, HttpStatus.OK);
+		return new ResponseEntity<List<StatusProducaoDTO>>(statusProducao, HttpStatus.OK);
 	}
 }
