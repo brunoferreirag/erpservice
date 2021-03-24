@@ -74,8 +74,8 @@ public class ErpServiceIT {
         
         ResponseEntity<String> response = restTemplate.postForEntity(uri,dto, String.class);
         Assert.assertEquals(HttpStatus.CREATED, response.getStatusCode());
-        String urlDelete = uri + response.getHeaders().getLocation(); 
-        //restTemplate.delete(urlDelete);
+        String idDelete = uri + "/" +response.getBody();
+        restTemplate.delete(idDelete);
         
 	}
 }

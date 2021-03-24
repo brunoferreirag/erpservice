@@ -21,7 +21,7 @@ public class ParadaProducao {
 	private Long id;
 
 	@NotNull
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne
 	private Turno turno;
 	
 	@NotNull

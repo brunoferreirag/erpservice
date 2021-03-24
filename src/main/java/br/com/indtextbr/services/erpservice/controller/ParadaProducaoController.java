@@ -48,8 +48,8 @@ public class ParadaProducaoController {
 	@PostMapping(produces = { "application/json" })
 	public ResponseEntity<Object> incluirParada(@RequestBody @Valid ParadaProducaoDTO paradaProducao){
 		Long id = this.paradaProducaoService.incluir(paradaProducao).getId();
-		URI location = URI.create(String.format("/%s", id));
-		return ResponseEntity.created(location).build();
+		URI location = URI.create(String.format("/parada-producao/%s", id));
+		return ResponseEntity.created(location).body(id);
 	}
 	
 	@PutMapping(value="/{id}",produces = { "application/json" })
@@ -60,7 +60,7 @@ public class ParadaProducaoController {
 	}
 	
 	@DeleteMapping(value="/{id}",produces = { "application/json" })
-	public ResponseEntity<Void> excluirParada(@PathVariable(value="/{id}") Long id){
+	public ResponseEntity<Void> excluirParada(@PathVariable(value="id") Long id){
 		this.paradaProducaoService.excluir(id);
 		return ResponseEntity.accepted().build();
 	}
