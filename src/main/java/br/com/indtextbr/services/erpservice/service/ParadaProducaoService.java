@@ -56,10 +56,12 @@ public class ParadaProducaoService {
 		
 		LinhaProducaoDTO linhaDTO = new LinhaProducaoDTO();
 		linhaDTO.setId(resultado.getLinha().getId());
+		linhaDTO.setNome(resultado.getLinha().getNome());
 		parada.setLinha(linhaDTO);
 		
 		TurnoDTO turno = new TurnoDTO();
 		turno.setId(resultado.getTurno().getId());
+		turno.setNome(resultado.getTurno().getNome());
 		parada.setTurno(turno);
 		return parada;
 	}

@@ -11,5 +11,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TurnoDTO {
-	private Long id;	
+	private Long id;
+	private String nome;
 }
