@@ -45,7 +45,7 @@ public class ParadaProducaoService {
 			
 			lista.add(parada);
 		});
-		Page<ParadaProducaoDTO> pageResult = new PageImpl<>(lista);
+		Page<ParadaProducaoDTO> pageResult = new PageImpl<>(lista,pageRequest,resultados.getTotalElements());
 		return pageResult;
 	}
 	private ParadaProducaoDTO criarParadaProducaoDTO(ParadaProducao resultado) {
