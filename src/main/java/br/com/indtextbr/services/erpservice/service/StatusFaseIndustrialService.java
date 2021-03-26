@@ -40,6 +40,7 @@ public class StatusFaseIndustrialService {
 		    BigDecimal diferencaMinutos =new BigDecimal(ChronoUnit.MINUTES.between(dataInicial, dataAtual));
 		    BigDecimal percentual =  diferencaMinutos.divide(quantidadeMinutosDia, 2, RoundingMode.HALF_UP).multiply(new BigDecimal(100));
 		    dto.setPercentualConcluido(percentual);
+		    dto.setPercentualPlanejado(percentual);
 		    statusFases.add(dto);
 		});
 		
